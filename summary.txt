@@ -1,0 +1,21 @@
+Part 1
+Passwords cracked: 1200
+Number of passwords tried: 484829858
+Total time: 130.81473690398212 s
+Time per password candidates checked per second: 3706232.718687227
+
+Part 2
+Passwords cracked: 1170
+Number of (user, pw) pairs tried: 490230315
+Total time: 1414.0070754232845 s
+Time per (user, pw) pairs checked per second: 346695.80051952
+
+Slowdown factor:
+The inclusion of hashes slowed down computation by around 1000%.
+Instead of being able to pre-hash all the words in words.txt, the inclusion
+of salts make it so we need to (for each username/password pair) go through every
+word in words.txt, add the salt to it and then run the hash function on it. This is
+in comparison to part 1 where we only needed to run the hash function on each word once and then
+compare them to the username/password pairs. Meaning we only need to run n hash functions where n
+is the length of words.txt. In contrast, if the length of passwords2.txt is m and the length of words.txt
+is n, in part 2 we must run the hashing function at most m^n times, drastically slowing down our program.
